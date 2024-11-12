@@ -3,12 +3,12 @@ function analyzePasswordStrength() {
     const strengthIndicator = document.getElementById('strengthIndicator');
     const feedback = document.getElementById('feedback');
     const strengthMessage = document.getElementById('strengthMessage');
-    const strengthEmoji = document.getElementById('strengthEmoji'); // New emoji element
+    
     
      const result = zxcvbn(password);
     let score = 0;
     let feedbackMessages = [];
-    let emoji = "😢";  // Default emoji for weak strength
+    
 
     // Criteria for password strength
     if (password.length >= 8) {
@@ -50,21 +50,20 @@ function analyzePasswordStrength() {
         strengthIndicator.style.backgroundColor = "red";
         strengthMessage.innerHTML = "🔴 Weak Password";
         strengthMessage.style.color = "red";
-        emoji = "😢";  // Sad face for weak password
+        
     } else if (strengthPercent <= 80) {
         strengthIndicator.style.backgroundColor = "orange";
         strengthMessage.innerHTML = "🟠 Medium Strength";
         strengthMessage.style.color = "orange";
-        emoji = "😐";  // Neutral face for medium strength
+        
     } else {
         strengthIndicator.style.backgroundColor = "green";
         strengthMessage.innerHTML = "🟢 Strong Password";
         strengthMessage.style.color = "green";
-        emoji = "😄";  // Happy face for strong password
+        
     }
 
-    // Update the emoji display above the heading
-    strengthEmoji.innerHTML = emoji;
+    
 
     // Display feedback messages
     feedback.innerHTML = feedbackMessages.join("<br>");
